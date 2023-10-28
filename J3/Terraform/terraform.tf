@@ -81,7 +81,7 @@ resource "helm_release" "vote-app" {
   name             = "vote-app"
   namespace        = "vote-app"
   create_namespace = true
-  chart            = "./vote-app-deployment"
+  chart            = "./Helm/vote-app-deployment"
 
   depends_on = [
     azurerm_kubernetes_cluster.aks,
