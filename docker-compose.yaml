@@ -9,7 +9,7 @@ services:
         - "6379:6379"
 
   azure-vote-front:
-    build: .
+    image: joffreydupire/build-voting-app
     environment:
       REDIS: azure-vote-back
     ports:
