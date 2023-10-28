@@ -40,9 +40,12 @@ spec:
             - name: http
               containerPort: {{ .Values.service.port }}
               protocol: TCP
+<<<<<<< HEAD
           env:
             - name: "REDIS"
               value: "redis.redis.svc.cluster.local"
+=======
+>>>>>>> 2b3163f (Add Helm chart)
           livenessProbe:
             httpGet:
               path: /

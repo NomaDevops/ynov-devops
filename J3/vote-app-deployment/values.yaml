@@ -5,10 +5,17 @@
 replicaCount: 1
 
 image:
+<<<<<<< HEAD
   repository: joffreydupire/simplon-voting-app
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
+=======
+  repository: joffreydupire/build-voting-app
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "latest"
+>>>>>>> 2b3163f (Add Helm chart)
 
 imagePullSecrets: []
 nameOverride: ""
@@ -32,8 +39,13 @@ securityContext:
   capabilities:
   #   drop:
   #   - ALL
+<<<<<<< HEAD
   readOnlyRootFilesystem: true
   runAsNonRoot: true
+=======
+  readOnlyRootFilesystem: false
+  runAsNonRoot: false
+>>>>>>> 2b3163f (Add Helm chart)
   # runAsUser: 1000
 
 service:
@@ -41,7 +53,11 @@ service:
   port: 80
 
 ingress:
+<<<<<<< HEAD
   enabled: true
+=======
+  enabled: false
+>>>>>>> 2b3163f (Add Helm chart)
   className: "nginx"
   annotations: {}
   hosts:
@@ -50,9 +66,12 @@ ingress:
         - path: /
           pathType: ImplementationSpecific
   tls: []
+<<<<<<< HEAD
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
+=======
+>>>>>>> 2b3163f (Add Helm chart)
 
 resources:
    limits:
