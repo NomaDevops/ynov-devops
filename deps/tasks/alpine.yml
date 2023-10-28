@@ -1,6 +1,0 @@
-- name: Make sure python is installed on Alpine
-  apk:
-    state: installed
-    name: python3
-  when: ansible_facts['distribution'] == "Alpine"
-  register: installed_alpine
