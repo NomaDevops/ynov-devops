@@ -14,16 +14,20 @@ packer {
 variable "docker_username" {
   type = string
   sensitive = true
+  default = "to_replace"
 }
 variable "docker_pat" {
   type = string
   sensitive = true
+  default = "to_replace"
 }
 variable "semantic_release_version" {
   type = string
+  default = "to_replace"
 }
 variable "repository" {
   type = string
+  default = "to_replace"
 }
 
 source "docker" "ubuntu" {
@@ -54,8 +58,8 @@ build {
 
     post-processor "docker-push" {
       login = true
-      login_username = ${var.docker_username}
-      login_password = ${var.docker_pat}
+      login_username = "${var.docker_username}"
+      login_password = "${var.docker_pat}"
     }
   }
 }
