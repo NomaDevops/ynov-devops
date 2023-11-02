@@ -1,0 +1,33 @@
+name: Build and Publish J3
+
+on:
+  pull_request:
+   types: [closed]
+   paths-ignore:
+    - J1/*
+    - J2/*
+    - J4/*
+    - J5/*
+
+jobs:
+  Publish_Release:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Release
+        uses: cycjimmy/semantic-release-action@v2
+        id: semantic
+        with:
+          semantic_version: 18.0.0
+          extra_plugins: |
+            @semantic-release/changelog@6.0.0
+            @semantic-release/git@10.0.0
+            conventional-changelog-conventionalcommits@4.6.3
+        env:
+          GITHUB_TOKEN: ${{ secrets.SEMANTIC_RELEASE }}
