@@ -46,7 +46,7 @@ build {
   ]
 
   provisioner "ansible" {
-    playbook_file = "../Ansible/playbook.yml"
+    playbook_file = "./Ansible/playbook.yml"
     extra_arguments = [ "--scp-extra-args", "'-O'" ]
   }
 
