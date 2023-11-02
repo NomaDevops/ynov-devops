@@ -92,9 +92,9 @@ jobs:
   
       - name: Build Artifact
         working-directory: ${{env.working-directory}}/Packer
-        run: packer build -color=false -on-error=abort \
+        run: "packer build -on-error=abort \
           -var docker_username=${{secrets.DOCKER_HUB_USERNAME}} \
           -var docker_pat=${{secrets.DOCKER_HUB_PAT}} \
           -var semantic_release_version=${{needs.SemVer.outputs.new_version}} \
           -var repository=${{github.event.repository.name}} \
-          voting-app.pkr.hcl
+          voting-app.pkr.hcl"
