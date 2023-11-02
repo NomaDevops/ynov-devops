@@ -14,5 +14,5 @@
   tasks:
     - name: "Copy source code to container"
       copy:
-        src: "./azure-vote"
+        src: "../azure-vote"
         dest: "/app"
