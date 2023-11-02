@@ -77,23 +77,24 @@ jobs:
       
       - name: Run `packer init`
         id: init
-        run: "packer init ./${{env.working-directory}}/Packer/voting-app.pkr.hcl"
+        working-directory: ${{env.working-directory}}/Packer
+        run: "packer init voting-app.pkr.hcl"
   
       - name: Run `packer validate`
         id: validate
-        working-directory: ${{env.working-directory}}
+        working-directory: ${{env.working-directory}}/Packer
         run: "packer validate \
           -var docker_username=${{secrets.DOCKER_HUB_USERNAME}} \
           -var docker_pat=${{secrets.DOCKER_HUB_PAT}} \
           -var semantic_release_version=${{needs.SemVer.outputs.new_version}} \
           -var repository=${{github.event.repository.name}} \
-          ./${{env.working-directory}}/Packer/voting-app.pkr.hcl"
+          voting-app.pkr.hcl"
   
       - name: Build Artifact
-        working-directory: ${{env.working-directory}}
+        working-directory: ${{env.working-directory}}/Packer
         run: packer build -color=false -on-error=abort \
           -var "docker_username=${{secrets.DOCKER_HUB_USERNAME}}" \
           -var "docker_pat=${{secrets.DOCKER_HUB_PAT}}" \
           -var "semantic_release_version=${{needs.SemVer.outputs.new_version}}" \
           -var "repository=${{github.event.repository.name}}" \
-          ./${{env.working-directory}}/Packer/voting-app.pkr.hcl
+          voting-app.pkr.hcl
