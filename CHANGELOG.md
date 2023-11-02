@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+### [1.0.7](https://github.com/NomaDevops/ynov-devops/compare/v1.0.6...v1.0.7) (2023-11-02)
+
+
+### Bug Fixes
+
+* playbook code copy ([cecd6cf](https://github.com/NomaDevops/ynov-devops/commit/cecd6cf0e7b091a7b971054c145ff4be7246f4ad))
+
 ### [1.0.6](https://github.com/NomaDevops/ynov-devops/compare/v1.0.5...v1.0.6) (2023-11-02)
 
 
