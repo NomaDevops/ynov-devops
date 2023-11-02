@@ -84,7 +84,7 @@ jobs:
         with:
           context: ./J1
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ github.event.repository.name }}:v${{ needs.SemVer.outputs.new_version }}
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ github.event.repository.name }}:${{ needs.SemVer.outputs.new_version }}
       
       - name: Build and push
         uses: docker/build-push-action@v4
@@ -92,4 +92,4 @@ jobs:
         with:
           context: ./J1
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ github.event.repository.name }}:v${{ needs.SemVer.outputs.old_version }}
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ github.event.repository.name }}:${{ needs.SemVer.outputs.old_version }}
