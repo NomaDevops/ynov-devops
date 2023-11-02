@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+### [1.0.1](https://github.com/NomaDevops/ynov-devops/compare/v1.0.0...v1.0.1) (2023-11-02)
+
+
+### Bug Fixes
+
+* flow ([bc6f228](https://github.com/NomaDevops/ynov-devops/commit/bc6f228e2343a960442f1c95ead136d44e3c38d4))
+
 ## 1.0.0 (2023-11-02)
 
 
