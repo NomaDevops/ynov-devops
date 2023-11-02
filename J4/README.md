@@ -8,7 +8,11 @@ Il faut cependant bien penser a ecrire le fichier kube config sur notre systeme 
 Au niveau Helm chart on reutilise ceux de la communauté pour l'ingress et redis il suffit simplement de suivre la documentation.
 
 ## Helm Chart
-On utilise le provider Helm de Terraform pour deployer les charts de la communauté, ces charts sont disponibles sur https://artifacthub.io/
+On cree le chart de notre voting-app avec la commande ```helm create```, on doit legerement modifier le fichier `templates/deployment.yaml` pour inclure la variable d'environnement et on donne la valeur ```redis.redis.svc.cluster.local``` qui pointe vers le FQDN dans Kubernetes directement.
+
+On change quelques valeurs dans le fichier `values.yaml` entre autre pour activer l'ingress et on modifie le nom de domaine.
+
+Vu qu'on a pas de serveur DNS on modifie le fichier `/etc/hosts` de notre machine pour faire pointer l'IP public de notre cluster vers le nom choisit, puis on peut interroger le FQDN
 
 ## KubeConfig
 La Kubeconfig est le fichier vous permettant de vous connecter a votre cluster Kubernetes, sans ce fichier la connexion va etre difficile.

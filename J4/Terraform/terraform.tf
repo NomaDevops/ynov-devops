@@ -76,3 +76,17 @@ resource "helm_release" "redis" {
     local_file.kube_config
   ]
 }
+
+resource "helm_release" "vote-app" {
+  name             = "vote-app"
+  namespace        = "vote-app"
+  create_namespace = true
+  chart            = "../Helm/vote-app-deployment"
+
+  depends_on = [
+    azurerm_kubernetes_cluster.aks,
+    local_file.kube_config,
+    helm_release.redis,
+    helm_release.nginx_ingress
+  ]
+}
