@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+### [1.0.4](https://github.com/NomaDevops/ynov-devops/compare/v1.0.3...v1.0.4) (2023-11-02)
+
+
+### Bug Fixes
+
+* working directory for packer ([baa8649](https://github.com/NomaDevops/ynov-devops/commit/baa864916aa04e03206ce80bf1b6885994c40fad))
+
 ### [1.0.3](https://github.com/NomaDevops/ynov-devops/compare/v1.0.2...v1.0.3) (2023-11-02)
 
 
