@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+### [1.0.3](https://github.com/NomaDevops/ynov-devops/compare/v1.0.2...v1.0.3) (2023-11-02)
+
+
+### Bug Fixes
+
+* ansible playbook path ([50eeed3](https://github.com/NomaDevops/ynov-devops/commit/50eeed351131bbb577d2af84af8f3921d48feaf9))
+
 ### [1.0.2](https://github.com/NomaDevops/ynov-devops/compare/v1.0.1...v1.0.2) (2023-11-02)
 
 
