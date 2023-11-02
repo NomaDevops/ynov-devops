@@ -1,6 +1,7 @@
 name: Build and Publish J1
 
 on:
+  workflow_dispatch:
   pull_request:
    types: [closed]
    paths-ignore:
