@@ -31,3 +31,19 @@ jobs:
             conventional-changelog-conventionalcommits@4.6.3
         env:
           GITHUB_TOKEN: ${{ secrets.SEMANTIC_RELEASE }}
+      
+      - name: Setup `packer`
+        uses: hashicorp/setup-packer@main
+        with:
+          version: "latest"
+    
+      - name: Run `packer init`
+        id: init
+        run: "packer init ./J2/Packer/docker-voting-app.pkr.hcl"
+  
+      - name: Run `packer validate`
+        id: validate
+        run: "packer validate ./J2/Packer/docker-voting-app.pkr.hcl"
+  
+      - name: Build Artifact
+        run: packer build -color=false -on-error=abort ./J2/Packer/docker-voting-app.pkr.hcl
