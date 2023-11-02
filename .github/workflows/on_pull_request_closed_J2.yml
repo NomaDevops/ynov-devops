@@ -81,6 +81,7 @@ jobs:
   
       - name: Run `packer validate`
         id: validate
+        working-directory: ${{env.working-directory}}
         run: "packer validate \
           -var docker_username=${{secrets.DOCKER_HUB_USERNAME}} \
           -var docker_pat=${{secrets.DOCKER_HUB_PAT}} \
@@ -89,6 +90,7 @@ jobs:
           ./${{env.working-directory}}/Packer/voting-app.pkr.hcl"
   
       - name: Build Artifact
+        working-directory: ${{env.working-directory}}
         run: packer build -color=false -on-error=abort \
           -var "docker_username=${{secrets.DOCKER_HUB_USERNAME}}" \
           -var "docker_pat=${{secrets.DOCKER_HUB_PAT}}" \
