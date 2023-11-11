@@ -1,0 +1,3 @@
+.DS*
+.terraform/*
+.terraform*
