@@ -90,3 +90,17 @@ resource "helm_release" "vote-app" {
     helm_release.nginx_ingress
   ]
 }
+
+resource "helm_release" "vote-app-canary" {
+  name             = "vote-app-canary"
+  namespace        = "vote-app-canary"
+  create_namespace = true
+  chart            = "../Helm/vote-app-canary"
+
+  depends_on = [
+    azurerm_kubernetes_cluster.aks,
+    local_file.kube_config,
+    helm_release.redis,
+    helm_release.nginx_ingress
+  ]
+}

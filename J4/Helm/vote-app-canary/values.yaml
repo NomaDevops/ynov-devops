@@ -6,9 +6,9 @@ replicaCount: 1
 
 image:
   repository: joffreydupire/simplon-voting-app
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "latest"
+  tag: "canary"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -48,7 +48,10 @@ service:
 ingress:
   enabled: true
   className: "nginx"
-  annotations: {}
+  annotations: {
+    nginx.ingress.kubernetes.io/canary: "true",
+    nginx.ingress.kubernetes.io/canary-weight: "50"
+    }
   hosts:
     - host: my-vote-app.local
       paths:
@@ -56,7 +59,7 @@ ingress:
           pathType: Prefix
           backend:
             service:
-              name: vote-app-deployment
+              name: vote-app-canary
               port:
                 number: 80
   tls: []
