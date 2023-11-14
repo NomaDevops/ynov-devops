@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.0](https://github.com/NomaDevops/ynov-devops/compare/v1.0.7...v1.1.0) (2023-11-14)
+
+
+### Features
+
+* add j4, correction j3 en supprimant helm chart ([889c9a6](https://github.com/NomaDevops/ynov-devops/commit/889c9a62c860bae714d373493c11e864b32afc86))
+* J4 correction ok ([5769475](https://github.com/NomaDevops/ynov-devops/commit/576947595cabaabafa6b26aaf66e66346aa68e07))
+
+
+### Bug Fixes
+
+* arm build ([7e49d8c](https://github.com/NomaDevops/ynov-devops/commit/7e49d8c63125ed7013508c8942d96f73b709d16d))
+
 ### [1.0.7](https://github.com/NomaDevops/ynov-devops/compare/v1.0.6...v1.0.7) (2023-11-02)
 
 
