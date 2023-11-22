@@ -46,6 +46,16 @@ resource "helm_release" "nginx_ingress" {
   repository       = "https://charts.bitnami.com/bitnami"
   chart            = "nginx-ingress-controller"
   version          = "9.4.1"
+  force_update     = true
+  set {
+    name  = "controller.service.annotations.service.beta.kubernetes.io/azure-load-balancer-health-probe-request-path"
+    value = "/healthz"
+  }
+
+  set {
+    name  = "controller.service.externalTrafficPolicy"
+    value = "Local"
+  }
 
   depends_on = [
     azurerm_kubernetes_cluster.aks,
@@ -60,6 +70,7 @@ resource "helm_release" "redis" {
   repository       = "https://charts.bitnami.com/bitnami"
   chart            = "redis"
   version          = "v17.9.2"
+  force_update     = true
 
   set {
     name  = "global.redis.password"
