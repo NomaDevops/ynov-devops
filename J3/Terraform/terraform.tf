@@ -61,6 +61,13 @@ resource "helm_release" "nginx_ingress" {
     azurerm_kubernetes_cluster.aks,
     local_file.kube_config
   ]
+
+  lifecycle {
+    replace_triggered_by = [
+      local_file.kube_config,
+      azurerm_kubernetes_cluster.aks
+    ]
+  }
 }
 
 resource "helm_release" "redis" {
@@ -86,4 +93,49 @@ resource "helm_release" "redis" {
     azurerm_kubernetes_cluster.aks,
     local_file.kube_config
   ]
+
+  lifecycle {
+    replace_triggered_by = [
+      local_file.kube_config,
+      azurerm_kubernetes_cluster.aks
+    ]
+  }
+}
+
+resource "helm_release" "kubecost" {
+  repository = "https://kubecost.github.io/cost-analyzer/"
+  chart = "cost-analyzer"
+  name = "cost-analyzer"
+  create_namespace = true
+  namespace = "kubecost"
+  cleanup_on_fail = true
+  force_update = true
+
+  set_sensitive {
+    name = "kubecostToken"
+    value = "to_replace"
+  }
+
+  set {
+    name = "ingress.enabled"
+    value = "true"
+  }
+
+  set {
+    name = "ingress.className"
+    value = "nginx"
+  }
+
+  set_list {
+    name = "ingress.hosts"
+    value = ["cost-analyzer.local"]
+  }
+
+  lifecycle {
+    replace_triggered_by = [
+      local_file.kube_config,
+      azurerm_kubernetes_cluster.aks
+    ]
+  }
+  
 }
